@@ -4357,9 +4357,15 @@ async function snapshotTrailDoc(trailId) {
   return { kind: "restore", data, comments: cs.docs.map((c) => ({ id: c.id, data: c.data() })) };
 }
 const sameVal = (a, b) => (typeof a === "number" && typeof b === "number") ? a === b : (a ?? "") === (b ?? "");
+// Campi che un "annulla" può riscrivere: la voce di log la crea il client di chiunque, quindi non ci si fida delle sue chiavi.
+const TRAIL_UNDO_KEYS = ["name", "zone", "status", "difficulty", "path", "lat", "lon", "lastUpdateAtMillis", "lastUpdateByName", "createdByUid", "createdAtMillis"];
+const pickKeys = (o, keys) => Object.fromEntries(Object.entries(o || {}).filter(([k]) => keys.includes(k)));
+
 /** Annulla una voce di log. Ritorna "ok" | "conflict" (serve force) ; lancia Error negli altri casi. */
 async function undoTrailLog(e, force) {
-  const u = e.undo; if (!u) throw new Error("Questa voce non si può annullare");
+  const u0 = e.undo; if (!u0) throw new Error("Questa voce non si può annullare");
+  const u = { ...u0, before: pickKeys(u0.before, TRAIL_UNDO_KEYS), data: pickKeys(u0.data, TRAIL_UNDO_KEYS),
+    comments: (u0.comments || []).map((c) => ({ id: c.id, data: pickKeys(c.data, ["authorUid", "authorName", "text", "newStatus", "createdAtMillis", "editedAtMillis"]) })) };
   const tid = e.trailId;
   if (u.kind === "fields") {
     const ref = doc(db, "trails", tid), sn = await getDoc(ref);

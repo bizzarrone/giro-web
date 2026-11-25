@@ -473,7 +473,7 @@
       L.circleMarker(res.points[0], { radius: 7, color: '#fff', fillColor: '#27AE60', fillOpacity: 1, weight: 2 }).addTo(layer);
       L.circleMarker(res.points[res.points.length - 1], { radius: 7, color: '#fff', fillColor: '#E74C3C', fillOpacity: 1, weight: 2 }).addTo(layer);
       if (fit) map.fitBounds(L.latLngBounds(res.points), { padding: [60, 60], maxZoom: 17 });
-      var nm = res.names.length ? res.names[0][0] + ' · ' : '';
+      var nm = res.names.length ? String(res.names[0][0]).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }) + ' · ' : ''; // nome da OpenStreetMap: testo libero, va in innerHTML
       ui(nm + Math.round(res.lengthM) + ' m', [
         [tt('◀ Estendi'), function () { extend(sel, false, true); showSel(false); }, true],
         [tt('Estendi ▶'), function () { extend(sel, true, true); showSel(false); }, true],

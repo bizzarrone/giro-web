@@ -158,10 +158,11 @@
             var box = document.createElement("div"); box.style.cssText = "font:600 13px sans-serif;color:#222;text-align:center;min-width:130px";
             var h = document.createElement("div"); h.textContent = b.name || "Trail builder"; box.appendChild(h);
             var sb = document.createElement("div"); sb.textContent = (EN ? "Zone " : "Zona ") + z.name; sb.style.cssText = "font-weight:400;color:#666;font-size:12px"; box.appendChild(sb);
-            if (b.url) {
+            var bu = String(b.url || "").trim();
+            if (/^https?:\/\//i.test(bu)) { // solo http(s): il link è scritto da altri utenti (trailZones.builders)
               var bt = document.createElement("button"); bt.textContent = EN ? "Open link \u203A" : "Apri link \u203A";
               bt.style.cssText = "margin-top:6px;border:0;border-radius:8px;padding:6px 12px;font:700 12px sans-serif;background:#FC5200;color:#fff;cursor:pointer";
-              bt.onclick = function () { if (window.Android && Android.openUrl) Android.openUrl(b.url); else window.open(b.url, "_blank", "noopener"); };
+              bt.onclick = function () { if (window.Android && Android.openUrl) Android.openUrl(bu); else window.open(bu, "_blank", "noopener"); };
               box.appendChild(bt);
             }
             new maplibregl.Popup({ offset: 24, closeButton: true }).setLngLat([b2 / z.pts.length, a / z.pts.length]).setDOMContent(box).addTo(map);

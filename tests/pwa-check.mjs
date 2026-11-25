@@ -1,0 +1,30 @@
+// Loads the local site copy + PWA kit in real Chrome: SW registration, offline reload, install banners.
+import puppeteer from 'puppeteer-core';
+const [url, out] = process.argv.slice(2);
+const browser = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new' });
+const res = {};
+const page = await browser.newPage();
+await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
+res.swState = await page.evaluate(async () => { const r = await navigator.serviceWorker.ready; return r.active && r.active.state; });
+await new Promise(r => setTimeout(r, 2500));
+res.cached = await page.evaluate(async () => (await (await caches.open('giro-v1')).keys()).map(r => new URL(r.url).pathname + (new URL(r.url).origin === location.origin ? '' : ' @' + new URL(r.url).host)));
+res.manifest = await page.evaluate(() => fetch(document.querySelector('link[rel=manifest]').href).then(r => r.json()).then(m => ({ name: m.name, display: m.display, icons: m.icons.length })));
+await page.screenshot({ path: `${out}/pwa-1-online.png` });
+await page.setOfflineMode(true);
+const nav = await page.reload({ waitUntil: 'domcontentloaded', timeout: 30000 });
+res.offlineReload = { status: nav.status(), fromServiceWorker: nav.fromServiceWorker() };
+await new Promise(r => setTimeout(r, 3000));
+res.offlineDom = await page.evaluate(() => ({ title: document.title, textLen: document.body.innerText.length, appJsRan: !!document.querySelector('#view-search').children.length || !!document.querySelector('#view-calendar').children.length }));
+await page.screenshot({ path: `${out}/pwa-2-offline.png` });
+await page.setOfflineMode(false);
+// iPhone Safari: no beforeinstallprompt → the kit shows the "Share → Add to Home Screen" hint
+const ios = await browser.newPage();
+await ios.setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1');
+await ios.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+await ios.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
+await new Promise(r => setTimeout(r, 5000));
+res.iosBanner = await ios.evaluate(() => document.querySelector('div[role=dialog]')?.innerText || null);
+await ios.screenshot({ path: `${out}/pwa-3-ios-hint.png` });
+console.log(JSON.stringify(res, null, 2));
+await browser.close();
