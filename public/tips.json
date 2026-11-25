@@ -1,0 +1,198 @@
+{
+ "v": 1,
+ "tips": [
+  {
+   "it": "Nella scheda Trail chiunque abbia fatto il login può aggiornare i trail: lo stato (aperto, chiuso…), il nome e la posizione sulla mappa. Aiuta tutti a tenere i sentieri al giorno!",
+   "en": "In the Trail tab anyone who is logged in can update the trails: status (open, closed…), name and position on the map. It helps everyone keep the trails up to date!",
+   "p": "android"
+  },
+  {
+   "it": "Hai trovato un sentiero chiuso o di nuovo aperto? Apri il trail nella scheda Trail e aggiungi un commento con il nuovo stato: lo vedono subito tutti.",
+   "en": "Found a trail that is closed or open again? Open the trail in the Trail tab and add a comment with the new status: everyone sees it right away.",
+   "p": "android"
+  },
+  {
+   "it": "Il tracciato di un trail è sbagliato o spostato? Sulla mappa attiva la matita (serve il login), tieni premuto il tracciato e scegli «Modifica»: trascina i punti per correggerlo.",
+   "en": "Is a trail's route wrong or shifted? On the map turn on the pencil (login needed), long-press the route and choose “Edit”: drag the points to fix it.",
+   "p": "android"
+  },
+  {
+   "it": "Puoi decidere l'ordine delle schede e se mostrarle o nasconderle: Menu → Preferenze → Tabs visibili (frecce per l'ordine, interruttore per nascondere).",
+   "en": "You can choose the order of the tabs and whether to show or hide them: Menu → Preferences → Visible tabs (arrows for the order, switch to hide).",
+   "p": "android"
+  },
+  {
+   "it": "Con «Singola riga schede» nelle Preferenze le schede scorrono su una riga sola; disattivata, sono tutte visibili su due righe.",
+   "en": "With “Single row tabs” in Preferences the tabs scroll on one row; turned off, they are all visible on two rows.",
+   "p": "android"
+  },
+  {
+   "it": "Tocca il logo o il nome del calendario in alto: vedi la descrizione, chi lo gestisce e, con «Altre info», codice, collaboratori e statistiche.",
+   "en": "Tap the calendar logo or name at the top: you see the description, who manages it and, with “More info”, code, collaborators and statistics.",
+   "p": "android"
+  },
+  {
+   "it": "Nell'elenco dei calendari la «i» accanto a ciascuno mostra amministratore, collaboratori, data di creazione e numero di uscite.",
+   "en": "In the calendars list the “i” next to each one shows administrator, collaborators, creation date and number of rides.",
+   "p": "android"
+  },
+  {
+   "it": "Sulla mappa gli occhi accendono e spengono zone, costruttori, trail, nomi e punti di interesse: lascia visibile solo quello che ti serve.",
+   "en": "On the map the eyes turn zones, builders, trails, names and points of interest on and off: keep visible only what you need.",
+   "p": "android"
+  },
+  {
+   "it": "Tocca un punto di interesse sulla mappa e poi «Naviga» per raggiungerlo con la tua app di navigazione.",
+   "en": "Tap a point of interest on the map, then “Navigate” to get there with your navigation app.",
+   "p": "android"
+  },
+  {
+   "it": "Hai un'idea per un'uscita? Dal menu → «Proponi evento» la mandi a chi gestisce il calendario.",
+   "en": "Got an idea for a ride? From the menu → “Propose event” send it to whoever manages the calendar.",
+   "p": "android"
+  },
+  {
+   "it": "Dal menu → «Condividi calendario» mandi il codice agli amici: basta quello per aprirlo.",
+   "en": "From the menu → “Share calendar” you send the code to friends: that is all they need to open it.",
+   "p": "android"
+  },
+  {
+   "it": "Dal menu → «Tema» cambi colori e aspetto dell'app.",
+   "en": "From the menu → “Theme” you change the colours and look of the app.",
+   "p": "android"
+  },
+  {
+   "it": "Nella scheda Trail chiunque abbia fatto il login può aggiornare i trail: lo stato (aperto, chiuso…), il nome e la posizione sulla mappa. Aiuta tutti a tenere i sentieri al giorno!",
+   "en": "In the Trail tab anyone who is logged in can update the trails: status (open, closed…), name and position on the map. It helps everyone keep the trails up to date!",
+   "p": "web"
+  },
+  {
+   "it": "Hai trovato un sentiero chiuso o di nuovo aperto? Apri il trail nella scheda Trail e aggiungi un commento con il nuovo stato: lo vedono subito tutti.",
+   "en": "Found a trail that is closed or open again? Open the trail in the Trail tab and add a comment with the new status: everyone sees it right away.",
+   "p": "web"
+  },
+  {
+   "it": "Il tracciato di un trail è sbagliato o spostato? Sulla mappa attiva la matita (serve il login), tieni premuto il tracciato e scegli «Modifica»: trascina i punti per correggerlo.",
+   "en": "Is a trail's route wrong or shifted? On the map turn on the pencil (login needed), long-press the route and choose “Edit”: drag the points to fix it.",
+   "p": "web"
+  },
+  {
+   "it": "Dal menu → Preferenze → «Barra schede» scegli se le schede scorrono su una riga o sono tutte visibili su due righe.",
+   "en": "From the menu → Preferences → «Tab bar» choose whether the tabs scroll on one row or are all visible on two rows.",
+   "p": "web"
+  },
+  {
+   "it": "Dal menu → «Dimensione testo» puoi ingrandire o rimpicciolire tutto il testo del sito.",
+   "en": "From the menu → “Text size” you can enlarge or shrink all the text on the site.",
+   "p": "web"
+  },
+  {
+   "it": "Sulla mappa gli occhi Z, L, T, N, P accendono e spengono zone, costruttori, trail, nomi e punti di interesse: lascia visibile solo quello che ti serve.",
+   "en": "On the map the eyes Z, L, T, N, P turn zones, builders, trails, names and points of interest on and off: keep visible only what you need.",
+   "p": "web"
+  },
+  {
+   "it": "Tocca un punto di interesse sulla mappa e poi «Naviga»: ti porta lì con Google Maps, Waze o Apple Maps (scegli quale dal menu → «App di navigazione»).",
+   "en": "Tap a point of interest on the map, then “Navigate”: it takes you there with Google Maps, Waze or Apple Maps (choose which from the menu → “Navigation app”).",
+   "p": "web"
+  },
+  {
+   "it": "Il pulsante 3D sulla mappa mostra la zona che stai guardando in rilievo, con i trail colorati per difficoltà.",
+   "en": "The 3D button on the map shows the area you are looking at in relief, with trails coloured by difficulty.",
+   "p": "web"
+  },
+  {
+   "it": "Il pulsante GPX sulla mappa carica un tuo file GPX per vederlo sopra i trail, anche in 3D.",
+   "en": "The GPX button on the map loads your own GPX file to see it over the trails, in 3D too.",
+   "p": "web"
+  },
+  {
+   "it": "Il pulsante 📍 sulla mappa ti mostra dove sei rispetto ai sentieri (serve il permesso di posizione).",
+   "en": "The 📍 button on the map shows where you are relative to the trails (location permission needed).",
+   "p": "web"
+  },
+  {
+   "it": "Dal menu → «Condividi codice» mandi il calendario agli amici: basta il codice per aprirlo.",
+   "en": "From the menu → “Share code” you send the calendar to friends: the code is all they need to open it.",
+   "p": "web"
+  },
+  {
+   "it": "Hai un'idea per un'uscita? Dal menu → «Proponi evento» la mandi a chi gestisce il calendario.",
+   "en": "Got an idea for a ride? From the menu → “Propose event” send it to whoever manages the calendar.",
+   "p": "web"
+  },
+  {
+   "it": "Dal menu → «Scala difficoltà» scegli i colori dei trail: scala classica o Trailforks.",
+   "en": "From the menu → “Difficulty scale” choose the trail colours: classic or Trailforks scale.",
+   "p": "web"
+  },
+  {
+   "it": "Dal menu → «Autoplay audio» decidi se l'audio dell'evento parte da solo aprendo la foto a tutto schermo.",
+   "en": "From the menu → “Audio autoplay” decide whether the event audio starts by itself when you open the photo full screen.",
+   "p": "web"
+  },
+  {
+   "it": "Dal menu → «Tema» e «Lingua» cambi tra chiaro e scuro, italiano e inglese.",
+   "en": "From the menu → “Theme” and “Language” switch between light and dark, Italian and English.",
+   "p": "web"
+  },
+  {
+   "it": "Dopo il primo accesso gli eventi si aprono subito dalla memoria del dispositivo e si aggiornano da soli: il menu → «Cache» mostra quanto spazio occupa.",
+   "en": "After the first visit events open straight from the device memory and update by themselves: the menu → “Cache” shows how much space it uses.",
+   "p": "web"
+  },
+  {
+   "it": "Scorri col dito a sinistra e a destra per passare da una scheda all'altra (Eventi, Mese, Trail, Mappa…): non serve toccare la barra in alto.",
+   "en": "Swipe left and right to move between tabs (Events, Month, Trails, Map…): no need to tap the bar at the top."
+  },
+  {
+   "it": "Il tuo spazio personale (giri registrati e file GPX tuoi) è privato e legato al tuo account Google: lo ritrovi uguale sia nell'app sia sul sito. Ogni file si cancella da solo dopo 30 giorni.",
+   "en": "Your personal space (recorded rides and your own GPX files) is private and tied to your Google account: you find it the same in the app and on the website. Each file deletes itself after 30 days."
+  },
+  {
+   "it": "Menu → «Il mio spazio»: tieni online gli ultimi 10 giri che registri con REC e fino a 10 file GPX tuoi (max 2 MB l'uno). Da lì li salvi, li condividi o li elimini.",
+   "en": "Menu → “My space”: keep your last 10 rides recorded with REC online, plus up to 10 GPX files of your own (2 MB max each). From there you save, share or delete them.",
+   "p": "android"
+  },
+  {
+   "it": "In Naviga, accanto a «APRI GPX», il pulsante ☁ apre un percorso dal tuo spazio personale: nessun file da cercare nel telefono. Quando inizi a navigare il pulsante sparisce.",
+   "en": "In Navigate, next to “OPEN GPX”, the ☁ button opens a route from your personal space: no file to look for on the phone. When you start navigating the button disappears.",
+   "p": "android"
+  },
+  {
+   "it": "Nella Mappa, tocca «GPX» e scegli «Il mio spazio»: mostra sulla mappa un percorso del tuo spazio personale, anche in 3D.",
+   "en": "On the Map, tap “GPX” and choose “My space”: it shows a route from your personal space on the map, in 3D too.",
+   "p": "android"
+  },
+  {
+   "it": "Premi REC in Naviga per registrare l'uscita: a fine giro il GPX si salva nella cartella Download/Giro del telefono e, se hai fatto il login, anche online nel tuo spazio.",
+   "en": "Press REC in Navigate to record your ride: when you finish the GPX is saved in the phone's Download/Giro folder and, if you are logged in, online in your space too.",
+   "p": "android"
+  },
+  {
+   "it": "Nella Home tieni premuto un pulsante per riordinare le schede: trascinale, nascondile o scegli quella che si apre all'avvio.",
+   "en": "On the Home screen long-press a button to rearrange the tabs: drag them, hide them or choose the one that opens at start.",
+   "p": "android"
+  },
+  {
+   "it": "Contatti e Officina sono grigi nella Home? Servono il login con Google: dopo l'accesso diventano utilizzabili.",
+   "en": "Contacts and Workshop are greyed out on the Home screen? They need a Google login: once you sign in they become usable.",
+   "p": "android"
+  },
+  {
+   "it": "Menu → «Il mio spazio (giri e GPX)»: trascina un file GPX sulla zona tratteggiata (o toccala) per caricarlo. Fino a 3 file da 2 MB, più gli ultimi 10 giri registrati con l'app. Restano online 30 giorni.",
+   "en": "Menu → “My space (rides and GPX)”: drag a GPX file onto the dashed area (or click it) to upload it. Up to 10 files of 2 MB, plus the last 10 rides recorded with the app. They stay online for 30 days.",
+   "p": "web"
+  },
+  {
+   "it": "I giri registrati con l'app Android compaiono in «Il mio spazio»: dal sito li scarichi in GPX sul computer con l'icona ⬇️.",
+   "en": "Rides recorded with the Android app show up in “My space”: from the website you download them as GPX on your computer with the ⬇️ icon.",
+   "p": "web"
+  },
+  {
+   "it": "Uscita da annullare? Apri l'uscita in modifica: in basso, vicino a «Elimina», c'è il pulsante rosso «Annulla uscita». Resta in calendario segnata come ANNULLATA; con «Riattiva uscita» la ripristini.",
+   "en": "Need to cancel a ride? Open the ride in edit mode: at the bottom, next to “Delete”, there is the red “Cancel ride” button. It stays in the calendar marked as CANCELLED; “Reactivate ride” restores it.",
+   "p": "web"
+  }
+ ]
+}

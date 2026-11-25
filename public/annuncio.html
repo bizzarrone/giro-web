@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Annuncio · Giro</title>
+<style>
+  :root { color-scheme: dark light; --bg:#1a1200; --fg:#f5ecd6; --mut:#b9ad8f; --card:#2a2000; --acc:#f5a800; }
+  @media (prefers-color-scheme: light) { :root { --bg:#fffaf0; --fg:#1b1b1f; --mut:#6b6455; --card:#fff; --acc:#b87800; } }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:"DM Sans",system-ui,sans-serif; display:flex; justify-content:center; padding:20px 14px; }
+  main { width:100%; max-width:560px; }
+  .card { background:var(--card); border-radius:18px; padding:18px; box-shadow:0 2px 12px #0003; }
+  h1 { margin:0 0 4px; font-size:26px; line-height:1.2; }
+  .price { color:var(--acc); font-weight:800; font-size:22px; margin:2px 0; }
+  .seller { font-weight:700; margin:4px 0 8px; }
+  .meta { color:var(--mut); font-size:12px; margin-top:12px; }
+  .pics img { width:100%; max-height:420px; object-fit:contain; border-radius:10px; margin-bottom:8px; background:#0002; }
+  .desc { white-space:pre-wrap; margin:8px 0; }
+  .links { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .links a { padding:10px 14px; border-radius:12px; background:#8881; color:var(--fg); text-decoration:none; font-weight:600; border:1px solid #8883; }
+  .sold { color:#e74c3c; font-weight:800; }
+  .site { display:block; text-align:center; margin-top:18px; color:var(--acc); font-weight:600; text-decoration:none; }
+  .msg { text-align:center; color:var(--mut); padding:40px 10px; }
+</style>
+</head>
+<body>
+<main id="root"><div class="msg">Caricamento…</div></main>
+<script src="i18n.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+import { getFirestore, doc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+import { firebaseConfig } from "./firebase-config.js";
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const clean = (b) => String(b || "").replace(/\s/g, "");
+const CATS = { bike: "Bici", parts: "Accessori", clothing: "Abbigliamento", other: "Altro" };
+const wa = (raw) => { let s = String(raw || "").trim(); const plus = s.startsWith("+"); s = s.replace(/\D/g, ""); if (s.length < 6) return null; return plus ? s : s.startsWith("00") ? s.slice(2) : "39" + s; };
+const root = document.getElementById("root");
+const q = new URLSearchParams(location.search);
+const code = (q.get("c") || "").toUpperCase(), id = q.get("id") || "";
+const site = `<a class="site" href="/">Apri Giro →</a>`;
+
+try {
+  if (!id) throw new Error("bad");
+  const db = getFirestore(initializeApp(firebaseConfig));
+  const path = code ? ["calendars", code, "listings", id] : ["listings", id];
+  const snap = await getDoc(doc(db, ...path));
+  if (!snap.exists()) throw new Error("none");
+  const l = snap.data();
+  let photos = l.photos || [];
+  if (l.photoCount > 0) {
+    photos = (await getDocs(collection(db, ...path, "photos"))).docs.map((d) => d.data()).sort((a, b) => (a.idx || 0) - (b.idx || 0)).map((d) => d.data);
+  }
+  if (!photos.length && l.thumb) photos = [l.thumb];
+  document.title = `${l.title} · Giro`;
+  const legacy = !l.phone && !l.email && !l.other;
+  const phone = legacy ? (/@/.test(l.contact || "") || !wa(l.contact) ? "" : l.contact) : (l.phone || "");
+  const email = legacy ? ((l.contact || "").split(/\s+/).find((x) => x.includes("@")) || "") : (l.email || "");
+  const other = legacy ? (!phone && !email ? (l.contact || "") : "") : (l.other || "");
+  const n = wa(phone);
+  const links = [];
+  if (n) links.push(`<a href="tel:+${n}">📞 Chiama</a>`);
+  if (n && (legacy || l.whatsapp)) links.push(`<a href="https://wa.me/${n}" rel="noopener">WhatsApp</a>`);
+  if (email) links.push(`<a href="mailto:${esc(email)}">✉️ ${esc(email)}</a>`);
+  root.innerHTML = `<div class="card">
+    <h1>${esc(l.title)}</h1>
+    ${l.ownerName ? `<div class="seller">👤 ${esc(l.ownerName)}</div>` : ""}
+    ${l.price ? `<div class="price">${esc(l.price)}</div>` : ""}${l.sold ? `<div class="sold">VENDUTO</div>` : ""}
+    <div class="pics">${photos.map((p) => `<img alt="" src="data:image/jpeg;base64,${clean(p)}">`).join("")}</div>
+    ${l.description ? `<div class="desc">${esc(l.description)}</div>` : ""}
+    <div><b>Contatto</b>${phone ? `<div>📞 ${esc(phone)}</div>` : ""}${email ? `<div>✉ ${esc(email)}</div>` : ""}${other ? `<div>${esc(other)}</div>` : ""}</div>
+    <div class="links">${links.join("")}</div>
+    <div class="meta">${esc(CATS[l.category] || "Altro")}</div></div>${site}`;
+} catch (e) {
+  root.innerHTML = `<div class="msg">Annuncio non disponibile o non più presente.</div>${site}`;
+}
+</script>
+<script>
+  addEventListener("load", function () { setTimeout(function () { try {
+    var bytes = 0; performance.getEntriesByType("navigation").concat(performance.getEntriesByType("resource")).forEach(function (e) { bytes += e.transferSize || 0; });
+    var fresh = 0; try { if (!sessionStorage.getItem("gc_sess")) { sessionStorage.setItem("gc_sess", "1"); fresh = 1; } } catch (e) {}
+    fetch("/api/hit", { method: "POST", keepalive: true, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ s: fresh, b: bytes, p: "annuncio" }) }).catch(function () {});
+  } catch (e) {} }, 3000); });
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Scarica Giro (versione di prova)</title>
+<meta name="description" content="Scarica l'APK di prova dell'app Giro per Android: versione, novità e istruzioni di installazione.">
+<link rel="icon" href="icon-192.png">
+<style>
+  :root { color-scheme: dark light; --bg:#1a1200; --fg:#f5ecd6; --mut:#b9ad8f; --card:#2a2000; --line:#8883; --acc:#f5a800; --on-acc:#241800; }
+  @media (prefers-color-scheme: light) { :root { --bg:#fffaf0; --fg:#1b1b1f; --mut:#6b6455; --card:#fff; --acc:#b87800; --on-acc:#fff; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:"DM Sans",system-ui,sans-serif; line-height:1.5; padding:24px 16px 48px; }
+  main { max-width:680px; margin:0 auto; }
+  header { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  header img { width:64px; height:64px; border-radius:16px; }
+  h1 { margin:0; font-size:26px; line-height:1.15; }
+  .sub { color:var(--mut); font-size:14px; }
+  section { background:var(--card); border-radius:16px; padding:18px 18px; margin-bottom:14px; box-shadow:0 2px 10px #0002; }
+  h2 { margin:0 0 8px; font-size:18px; }
+  p { margin:0 0 8px; } p:last-child { margin-bottom:0; }
+  .dl { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:4px; }
+  .btn { display:inline-block; background:var(--acc); color:var(--on-acc); font-weight:700; text-decoration:none; padding:13px 22px; border-radius:12px; font-size:16px; }
+  .btn:focus-visible { outline:3px solid var(--fg); outline-offset:2px; }
+  .meta { display:grid; grid-template-columns:auto 1fr; gap:2px 14px; font-size:14px; margin:12px 0 0; }
+  .meta dt { color:var(--mut); } .meta dd { margin:0; word-break:break-all; }
+  ol, ul { margin:6px 0 0; padding-left:22px; } li { margin-bottom:4px; }
+  .note { color:var(--mut); font-size:13px; }
+  .rel { border-top:1px solid var(--line); padding-top:12px; margin-top:12px; }
+  .rel:first-of-type { border-top:0; padding-top:0; margin-top:0; }
+  .rel h3 { margin:0 0 4px; font-size:16px; } .rel h3 small { color:var(--mut); font-weight:400; margin-left:6px; }
+  .tag { display:inline-block; font-size:12px; font-weight:700; padding:1px 8px; border-radius:999px; background:var(--acc); color:var(--on-acc); margin-left:6px; vertical-align:middle; }
+  a.link { color:var(--acc); font-weight:600; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon-192.png" alt="">
+    <div>
+      <h1>Giro</h1>
+      <div class="sub">Calendario delle uscite in bici di gruppo · versione di prova per Android</div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Scarica l'app di prova</h2>
+    <p>Questo è l'APK di prova (build «debug») di Giro, per chi vuole provare le novità prima della versione sul Play Store.</p>
+    <div class="dl">
+      <a class="btn" id="dlBtn" href="girocalendar-debug.apk" download>Scarica l'APK</a>
+      <span class="note" id="dlHint">Caricamento versione…</span>
+    </div>
+    <dl class="meta" id="meta" hidden>
+      <dt>Versione</dt><dd id="mVer"></dd>
+      <dt>Pubblicata il</dt><dd id="mDate"></dd>
+      <dt>Dimensione</dt><dd id="mSize"></dd>
+      <dt>SHA-256</dt><dd id="mSha"></dd>
+    </dl>
+    <p class="note" style="margin-top:12px">L'indirizzo di download non cambia mai: <code>girocalendar.pages.dev/girocalendar-debug.apk</code> porta sempre all'ultima versione.</p>
+  </section>
+
+  <section>
+    <h2>Come si installa</h2>
+    <ol>
+      <li>Apri questa pagina dal telefono Android e tocca <b>Scarica l'APK</b>.</li>
+      <li>Apri il file scaricato. Se Android lo chiede, consenti l'installazione di app da questa fonte (una volta sola).</li>
+      <li>Tocca <b>Installa</b>. L'app si chiama <b>Giro (debug)</b> e si installa <b>accanto</b> alla versione del Play Store, senza sostituirla.</li>
+    </ol>
+    <p class="note" style="margin-top:10px">Per aggiornare basta scaricare di nuovo l'APK e installarlo sopra: i dati restano. Il login con Google funziona come nella versione normale.</p>
+  </section>
+
+  <section>
+    <h2>Cosa c'è di nuovo</h2>
+    <div id="releases"><p class="note">Caricamento…</p></div>
+  </section>
+
+  <section>
+    <h2>Cos'è Giro</h2>
+    <p>Giro è il calendario delle uscite in bici del tuo gruppo: MTB, strada, gravel, cicloturismo. Si apre un calendario digitando il suo codice, senza bisogno di accedere; chi organizza accede con Google e gestisce le uscite insieme ai collaboratori.</p>
+    <ul>
+      <li>Uscite con ritrovo, difficoltà, note, tracce GPX, foto e audio</li>
+      <li>Mappa con trail, zone e punti di interesse, anche in 3D</li>
+      <li>Contatti, officina, mercatino e scheda Emergenza</li>
+    </ul>
+    <p class="note" style="margin-top:10px">È una versione di prova: può contenere difetti. Se trovi qualcosa che non va, segnalalo a chi ti ha mandato il link.</p>
+    <p style="margin-top:10px"><a class="link" href="./">Apri la versione web di Giro</a></p>
+  </section>
+</main>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function fmtDate(iso) { try { return new Date(iso + "T12:00:00").toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" }); } catch (e) { return iso; } }
+  fetch("apk-info.json", { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
+    $("mVer").textContent = d.versionName + " (build " + d.versionCode + ")";
+    $("mDate").textContent = fmtDate(d.date);
+    $("mSize").textContent = (d.sizeBytes / 1048576).toFixed(1).replace(".", ",") + " MB";
+    $("mSha").textContent = d.sha256 || "";
+    $("meta").hidden = false;
+    $("dlHint").textContent = "Versione " + d.versionName + " · " + (d.sizeBytes / 1048576).toFixed(1).replace(".", ",") + " MB";
+    $("releases").innerHTML = (d.releases || []).map(function (r, i) {
+      return '<div class="rel"><h3>Versione ' + esc(r.version) + (i === 0 ? '<span class="tag">in download</span>' : "") + '<small>' + esc(fmtDate(r.date)) + '</small></h3><ul>' +
+        r.items.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></div>";
+    }).join("") || '<p class="note">Nessuna nota di versione.</p>';
+  }).catch(function () {
+    $("dlHint").textContent = "Versione non disponibile";
+    $("releases").innerHTML = '<p class="note">Non riesco a caricare le novità. Riprova tra poco.</p>';
+  });
+})();
+</script>
+</body>
+</html>
