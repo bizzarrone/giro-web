@@ -1,0 +1,4 @@
+{"case":"contacts.js openContactBig: altroLabel (calendars/{code}/contacts/{uid})","before":"ATTACKER JS RAN","after":"blocked"}
+{"case":"trailtrace.js trail snapping: OpenStreetMap way name into innerHTML","before":"ATTACKER JS RAN","after":"blocked"}
+{"case":"flight3d.js 3D view: trail-builder link (trailZones.builders[].url) passed to Android.openUrl","before":"opener got \"javascript:window.__pwned=1\"","after":"blocked (no link offered)"}
+{"case":"control: a legitimate https builder link still opens","before":"opener got \"https://www.instagram.com/crew\"","after":"opener got \"https://www.instagram.com/crew\""}

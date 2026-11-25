@@ -170,7 +170,7 @@ function openGroupEditor() {
 /** Contatto in grande: foto, nome e un pulsante ampio per ogni modo di contattarlo. */
 function openContactBig(c) {
   const big = (href, label, value, extra = "") =>
-    `<a class="btn block ct-big" data-copy="${C.esc(value)}" data-label="${C.esc(label)}" ${extra} href="${C.esc(href)}" style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px 16px;margin-top:8px;text-align:left"><b>${label}</b><span class="small" style="opacity:.85;word-break:break-all">${C.esc(value)}</span></a>`;
+    `<a class="btn block ct-big" data-copy="${C.esc(value)}" data-label="${C.esc(label)}" ${extra} href="${C.esc(href)}" style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px 16px;margin-top:8px;text-align:left"><b>${C.esc(label)}</b><span class="small" style="opacity:.85;word-break:break-all">${C.esc(value)}</span></a>`;
   const rows = [];
   if (c.phone) rows.push(big("tel:" + c.phone.trim(), "Telefono", c.phone));
   if (c.email) rows.push(big("mailto:" + c.email.trim(), "Email", c.email));

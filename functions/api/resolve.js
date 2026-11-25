@@ -1,6 +1,6 @@
 // Segue i link corti di Google Maps (maps.app.goo.gl, goo.gl, g.co) e restituisce l'URL finale, da cui il
 // sito ricava le coordinate per aprire Waze/Apple Maps. Solo host Google ammessi (niente fetch arbitrari).
-const ALLOWED = [/^maps\.app\.goo\.gl$/, /^goo\.gl$/, /^g\.co$/, /^(www\.)?google\.[a-z.]+$/, /^maps\.google\.[a-z.]+$/, /^consent\.google\.[a-z.]+$/];
+const ALLOWED = [/^maps\.app\.goo\.gl$/, /^goo\.gl$/, /^g\.co$/, /^(www\.|maps\.|consent\.)?google\.(com|[a-z]{2}|co\.[a-z]{2}|com\.[a-z]{2})$/];
 const ok = (h) => ALLOWED.some((r) => r.test(h));
 const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json", "cache-control": "public, max-age=86400" } });
 
