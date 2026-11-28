@@ -993,7 +993,7 @@ async function openCalendar(code, openEventId) {
     splash.remove();
     root.innerHTML = `<div class="wrap"><div class="card pad"><h3>Accesso negato</h3>
       <p>Un amministratore ha bloccato il tuo account su questo calendario.</p>
-      <button class="btn" onclick="location.hash=''">Torna alla ricerca</button></div></div>`;
+      <button class="btn" data-home>Torna alla ricerca</button></div></div>`;
   };
   if (state.user) {
     const ids = [state.user.uid, (state.user.email || "").trim().toLowerCase()].filter(Boolean);
@@ -1011,7 +1011,7 @@ async function openCalendar(code, openEventId) {
   if (!first.exists()) {
     root.innerHTML = `<div class="wrap"><div class="card pad">
       <p>Nessun calendario con il codice <code>${esc(code)}</code>.</p>
-      <button class="btn" onclick="location.hash=''">Torna alla ricerca</button></div></div>`;
+      <button class="btn" data-home>Torna alla ricerca</button></div></div>`;
     return;
   }
   incrementOpenCount(code);
@@ -1288,7 +1288,7 @@ function renderCalendar() {
   $("#view-calendar").innerHTML = `
     <div class="cal-header">
       <div class="cal-bar">
-        <button class="icon-btn" onclick="location.hash=''" title="Indietro">←</button>
+        <button class="icon-btn" data-home title="Indietro">←</button>
         <button id="calQuickInfoBtn" class="cal-title-btn" title="Info calendario" style="display:flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;padding:0">
           <span class="dot sm" style="background:${dotColor(t.code, t.logoColor)}">${
             t.logoData ? `<img src="data:image/*;base64,${esc(t.logoData)}" alt="">` : ""}</span>
@@ -2196,9 +2196,11 @@ function loadLeaflet() {
   leafletLoaded = new Promise((resolve) => {
     const css = document.createElement("link");
     css.rel = "stylesheet";
+    css.integrity = "sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H"; css.crossOrigin = "anonymous";
     css.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
     document.head.appendChild(css);
     const script = document.createElement("script");
+    script.integrity = "sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"; script.crossOrigin = "anonymous";
     script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
     script.onload = resolve;
     document.head.appendChild(script);

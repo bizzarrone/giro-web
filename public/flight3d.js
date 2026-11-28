@@ -12,9 +12,10 @@
     if (window.maplibregl) return Promise.resolve();
     if (loading) return loading;
     loading = new Promise(function (res, rej) {
-      var css = document.createElement("link"); css.rel = "stylesheet";
+      // integrity (SRI): se il CDN servisse un file diverso da quello verificato, il browser lo rifiuta. Cambiando VER vanno ricalcolati.
+      var css = document.createElement("link"); css.rel = "stylesheet"; css.integrity = "sha384-MinO0mNliZ3vwppuPOUnGa+iq619pfMhLVUXfC4LHwSCvF9H+6P/KO4Q7qBOYV5V"; css.crossOrigin = "anonymous";
       css.href = "https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/" + VER + "/maplibre-gl.css"; document.head.appendChild(css);
-      var s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/" + VER + "/maplibre-gl.js";
+      var s = document.createElement("script"); s.integrity = "sha384-SYKAG6cglRMN0RVvhNeBY0r3FYKNOJtznwA0v7B5Vp9tr31xAHsZC0DqkQ/pZDmj"; s.crossOrigin = "anonymous"; s.src = "https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/" + VER + "/maplibre-gl.js";
       s.onload = res; s.onerror = function () { loading = null; rej(new Error("maplibre")); }; document.head.appendChild(s);
     });
     return loading;

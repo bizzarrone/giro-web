@@ -3,7 +3,7 @@
 const CACHE = "giro-v1";
 const CORE = ["./", "index.html", "style.css", "i18n.js", "trailtrace.js", "gpxtools.js", "navigate.js",
   "flight3d.js", "app.js", "contacts.js", "mercatino.js", "workshop.js", "firebase-config.js",
-  "manifest.json", "icon-192.png", "icon-512.png"];
+  "boot.js", "hit.js", "install.js", "manifest.json", "icon-192.png", "icon-512.png"];
 const CDN = ["https://unpkg.com/leaflet@1.9.4/", "https://www.gstatic.com/firebasejs/"];
 
 self.addEventListener("install", (e) => {

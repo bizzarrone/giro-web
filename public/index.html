@@ -11,43 +11,22 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icon-192.png">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <title>Giro</title>
-  <script>
-    // Applica subito tema e dimensione testo salvati, per evitare il flash al primo paint
-    try {
-      var t = localStorage.getItem("gc_theme");
-      if (t) document.documentElement.dataset.theme = t;
-      var s = parseFloat(localStorage.getItem("gc_text_scale") || "1");
-      if (s) document.documentElement.style.setProperty("--text-scale", Math.min(1.5, Math.max(0.5, s)));
-    } catch (e) {}
-  </script>
+  <script src="boot.js"></script>
 </head>
 <body>
   <div id="view-search" class="view"></div>
   <div id="view-calendar" class="view"></div>
   <script src="i18n.js"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
   <script src="trailtrace.js"></script>
   <script src="gpxtools.js"></script>
   <script src="navigate.js"></script>
   <script src="flight3d.js"></script>
   <script type="module" src="app.js"></script>
   <script src="install.js" defer></script>
-  <script>
-    // Contatore anonimo di visite e banda (vedi /api/hit): una volta per caricamento, a pagina assestata.
-    addEventListener("load", function () {
-      setTimeout(function () {
-        try {
-          var bytes = 0;
-          performance.getEntriesByType("navigation").concat(performance.getEntriesByType("resource")).forEach(function (e) { bytes += e.transferSize || 0; });
-          var fresh = 0;
-          try { if (!sessionStorage.getItem("gc_sess")) { sessionStorage.setItem("gc_sess", "1"); fresh = 1; } } catch (e) {}
-          fetch("/api/hit", { method: "POST", keepalive: true, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ s: fresh, b: bytes, p: "app" }) }).catch(function () {});
-        } catch (e) {}
-      }, 3000);
-    });
-  </script>
+  <script src="hit.js"></script>
 </body>
 </html>

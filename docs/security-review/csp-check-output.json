@@ -1,0 +1,31 @@
+{
+  "policy_script_src": "script-src 'self' https://unpkg.com https://cdnjs.cloudflare.com https://www.gstatic.com https://apis.google.com",
+  "index": {
+    "blocked": [],
+    "leaflet": true,
+    "theme": "dark",
+    "appRendered": true
+  },
+  "maplibreSRI": "loaded: object",
+  "tamperedSRI": "rejected by the browser (expected)",
+  "backButton": {
+    "hashAfterClick": "",
+    "searchViewActive": true
+  },
+  "/card.html": {
+    "blocked": [],
+    "bodyText": "Card not available or no longer shared.\nOpen Giro →"
+  },
+  "/annuncio.html": {
+    "blocked": [],
+    "bodyText": "Listing not available or no longer present.\nOpen Giro →"
+  },
+  "/download.html": {
+    "blocked": [],
+    "bodyText": "Giro\nCalendario delle uscite in bici di gruppo · versione di"
+  },
+  "/stats.html": {
+    "blocked": [],
+    "bodyText": "Statistiche\n\nArea riservata all'amministratore.\n\nAccedi con "
+  }
+}
