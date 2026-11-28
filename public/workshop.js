@@ -127,8 +127,8 @@ function draw() {
       <tbody>${jobs.map((j) => {
         const bg = jobColorHex(j.color);
         const ics = resolveIcons(j).map((i) => svgIcon(i, 13, iconColor(i) || (bg ? "#000" : "currentColor"))).join("");
-        return `<tr data-id="${j.id}"><td class="c">${fmtDate(j.date)}</td><td class="c">${fmtCost(j.cost)}</td><td class="c">${C.esc(j.place)}</td>
-          <td class="w" ${bg ? `style="background:${bg};color:#000"` : ""}>${ics}${C.esc(j.work)}</td><td class="r">${j.km ?? ""}</td></tr>`;
+        return `<tr data-id="${j.id}"><td class="c">${C.esc(fmtDate(j.date))}</td><td class="c">${fmtCost(j.cost)}</td><td class="c">${C.esc(j.place)}</td>
+          <td class="w" ${bg ? `style="background:${bg};color:#000"` : ""}>${ics}${C.esc(j.work)}</td><td class="r">${C.esc(j.km ?? "")}</td></tr>`;
       }).join("")}</tbody>
       <tfoot><tr><td></td><td class="c b">${fmtCost(Math.round(total * 100) / 100)} €</td><td class="c b">TOTALE</td><td></td><td></td></tr></tfoot>
     </table></div>`;
@@ -342,8 +342,9 @@ function doExport(fmt, bike, jobs) {
 <table><thead><tr><th>DATA</th><th>COSTO €</th><th>LUOGO</th><th>LAVORO</th><th>KM</th></tr></thead><tbody>
 ${jobs.map((j) => { const bg = jobColorHex(j.color); return `<tr><td class="c">${fmtDate(j.date)}</td><td class="r">${fmtCost(j.cost)}</td><td class="c">${esc(j.place)}</td><td ${bg ? `style="background:${bg}"` : ""}>${resolveIcons(j).map((i) => svgIcon(i, 11, iconColor(i) || "#000")).join("")}${esc(j.work)}</td><td class="r">${j.km ?? ""}</td></tr>`; }).join("")}
 </tbody></table><p><b>${fmtCost(Math.round(total * 100) / 100)} €</b> &nbsp; TOTALE</p>
-<script>onload=()=>setTimeout(()=>print(),300)<\/script>`);
+`);
     win.document.close();
+    setTimeout(() => win.print(), 300);   // prima era uno <script> inline nella finestra, che una CSP senza 'unsafe-inline' blocca
   }
 }
 function drawCanvas(bike, jobs, total) {

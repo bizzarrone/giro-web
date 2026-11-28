@@ -12,9 +12,10 @@
     if (window.maplibregl) return Promise.resolve();
     if (loading) return loading;
     loading = new Promise(function (res, rej) {
-      var css = document.createElement("link"); css.rel = "stylesheet";
+      // integrity (SRI): se il CDN servisse un file diverso da quello verificato, il browser lo rifiuta. Cambiando VER vanno ricalcolati.
+      var css = document.createElement("link"); css.rel = "stylesheet"; css.integrity = "sha384-MinO0mNliZ3vwppuPOUnGa+iq619pfMhLVUXfC4LHwSCvF9H+6P/KO4Q7qBOYV5V"; css.crossOrigin = "anonymous";
       css.href = "https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/" + VER + "/maplibre-gl.css"; document.head.appendChild(css);
-      var s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/" + VER + "/maplibre-gl.js";
+      var s = document.createElement("script"); s.integrity = "sha384-SYKAG6cglRMN0RVvhNeBY0r3FYKNOJtznwA0v7B5Vp9tr31xAHsZC0DqkQ/pZDmj"; s.crossOrigin = "anonymous"; s.src = "https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/" + VER + "/maplibre-gl.js";
       s.onload = res; s.onerror = function () { loading = null; rej(new Error("maplibre")); }; document.head.appendChild(s);
     });
     return loading;
@@ -158,10 +159,11 @@
             var box = document.createElement("div"); box.style.cssText = "font:600 13px sans-serif;color:#222;text-align:center;min-width:130px";
             var h = document.createElement("div"); h.textContent = b.name || "Trail builder"; box.appendChild(h);
             var sb = document.createElement("div"); sb.textContent = (EN ? "Zone " : "Zona ") + z.name; sb.style.cssText = "font-weight:400;color:#666;font-size:12px"; box.appendChild(sb);
-            if (b.url) {
+            var bu = String(b.url || "").trim();
+            if (/^https?:\/\//i.test(bu)) { // solo http(s): il link è scritto da altri utenti (trailZones.builders)
               var bt = document.createElement("button"); bt.textContent = EN ? "Open link \u203A" : "Apri link \u203A";
               bt.style.cssText = "margin-top:6px;border:0;border-radius:8px;padding:6px 12px;font:700 12px sans-serif;background:#FC5200;color:#fff;cursor:pointer";
-              bt.onclick = function () { if (window.Android && Android.openUrl) Android.openUrl(b.url); else window.open(b.url, "_blank", "noopener"); };
+              bt.onclick = function () { if (window.Android && Android.openUrl) Android.openUrl(bu); else window.open(bu, "_blank", "noopener"); };
               box.appendChild(bt);
             }
             new maplibregl.Popup({ offset: 24, closeButton: true }).setLngLat([b2 / z.pts.length, a / z.pts.length]).setDOMContent(box).addTo(map);
